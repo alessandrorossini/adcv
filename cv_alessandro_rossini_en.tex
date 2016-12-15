@@ -1,0 +1,366 @@
+%!TEX TS-program = xelatex
+\documentclass[a4paper,online]{adcv}
+
+\usepackage[british]{babel}
+
+\newcommand*{\hib}{Bergen University College}
+\newcommand*{\uib}{University of Bergen}
+\newcommand*{\uniaq}{Universit{\`a} degli Studi dell'Aquila}
+
+\addbibresource{bib_alessandro_rossini.bib}
+
+\title{Alessandro Rossini's CV}
+
+\adcvname{Alessandro}{Rossini}
+\adcvtitle{Researcher and lecturer in software engineering}
+\adcvaddress{Karl Johans gate 1}{0154}{Oslo}{Norway}
+\adcvwebsite{https://alessandrorossini.org}{alessandrorossini.org}
+\adcvemail{me}{alessandrorossini}{org}
+\adcvphone{(+47) 123 45 678}
+\adcvdate{Dec 2016}
+
+\begin{document}
+
+\selectlanguage{british}
+
+Born 22 Dec 1980, Italian citizen, Norwegian resident, male, single.
+
+I am detail-oriented, organised, and goal-oriented. During recent years, I have conducted extensive research and development in the field of software engineering, with particular emphasis on model-driven engineering and cloud computing.
+
+\ifextended
+  Currently, I am carrying out research in collaboration with international partners within EU-funded projects. My contribution is the design of techniques and methods for the specification and execution of cross-cloud applications.
+
+  My research interests include modelling, multi-level modelling, domain-specific languages, software development processes, software quality, empirical methods, cloud computing, big data, Internet standards, social networks.
+\fi
+
+\section{Experience}
+
+\begin{adcvtabletwo}
+  \adcvrowtwo{\textbf{Research Scientist}, Department of Networked Systems and Services, SINTEF, Oslo, Norway}{Nov 2012-Feb 2017}
+  \ifextended
+    \adcvrowmulti{Research on model-driven engineering and cloud computing. Development of \href{http://camel-dsl.org}{CAMEL}, a domain-specific modelling language along with a models@run-time environment for the specification of provisioning, deployment, monitoring, and adaptation of cross-cloud applications at design-time and their enactment at run-time. Development of mechanisms for failure analysis and failure prevention and recovery of cloud-based applications. Development of \href{http://equelle.org}{Equelle}, a domain-specific language for the specification of simulators for systems of partial differential equations. Participation in the EU-funded projects \href{http://www.paasage.eu}{PaaSage}, \href{http://www.broker-cloud.eu}{Broker@Cloud}, and \href{http://www.arcadia-framework.eu}{ARCADIA}, and the SINTEF-funded project \href{http://equelle.org}{STWT}~(see \hyperref[sec:projects]{Projects} below). Supervision of students in the context of Master thesis and internship~(see \hyperref[sec:supervision]{Supervision} below).}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Part-time Lecturer}, Department of Electrical and Electronic Eng., \hib{}, Norway}{Jan 2012-Jul 2012}
+  \ifextended
+    \adcvrowmulti{Teaching of the Bachelor course Industrial Software Engineering (see \hyperref[sec:teaching]{Teaching} below).}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Guest Researcher}, Department of Computer Science, Universidad Aut{\'o}noma de Madrid, Spain}{Feb 2011-May 2011}
+  \ifextended
+    \adcvrowmulti{Research on multi-level modelling.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Research Fellow}, Department of Informatics, \uib{}, Norway}{Jan 2008-Jan 2012}
+  \ifextended
+    \adcvrowmulti{75\% research on formal aspects of model-driven engineering. Development of \href{http://dpf.hib.no}{DPF}, a diagrammatic specification framework founded on category theory and graph transformation. 25\% teaching in the Bachelor courses Program Development Methodologies and Software Engineering, and in the Master course Software Security~(see \hyperref[sec:teaching]{Teaching} below).}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Software Engineer}, Integrator, Bergen, Norway}{Jun 2007-Dec 2007}
+  \ifextended
+    \adcvrowmulti{Management, analysis, design and system administration of the project AlarmCenter, a real-time system for the management of prison facilities, connecting different subsystems like alarms, pagers, intercoms, telephones, etc. Work based on Unified Process, UML, .NET platform and Citrix XenServer.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Software Engineer}, ZeroNotice, L'Aquila, Italy}{Aug 2005-May 2007}
+  \ifextended
+    \adcvrowmulti{Management, analysis, design, implementation and system administration of the project \href{http://zeronotice.org}{ZNF}, an open source framework for building enterprise web applications. Work based on Unified Process, UML, Apache, PHP5, MySQL, XSLT, XHTML, CSS and JavaScript. Management, analysis, design, implementation and system administration of several web applications based on ZNF.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Software Engineer} (Intern), IgTechnology (now Indra), Roma, Italy}{May 2005-Jul 2005}
+  \ifextended
+    \adcvrowmulti{Analysis, design, implementation and system administration of the project \textit{Gestione Servizi Interni} (Internal Services Manager), the enterprise resource planning system of the company. Work based on Unified Process, UML, J2EE platform, Apache Struts framework, Oracle Kodo JPA/JDO, XHTML, CSS and JavaScript.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Part-time Trainer}, Training agency Assodonna, Pescara, Italy}{Oct 2004-Mar 2005}
+  \ifextended
+    \adcvrowmulti{Teaching of the European Computer Driving Licence (ECDL)-like courses Computer Usage, File Management, Word Processing, Spreadsheets and Databases~(see \hyperref[sec:teaching]{Teaching} below).}
+  \fi
+\end{adcvtabletwo}
+
+\section{Projects}\label{sec:projects}
+
+\begin{adcvtabletwo}
+  \adcvrowtwo{\textbf{\href{http://www.arcadia-framework.eu}{ARCADIA}}, a framework for the development of highly-distributed applications}{Jan 2014-Feb 2017}
+  \ifextended
+    \adcvrowmulti{Funded by the European Commission's H2020 Programme.}
+    \adcvrowmulti{Leader of the Task on Context Models, Internal Project Manager at SINTEF.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{\href{http://www.paasage.eu}{PaaSage}}, a model-based framework for the specification and execution of cross-cloud applications}{Nov 2012-Nov 2016}
+  \ifextended
+    \adcvrowmulti{Funded by the European Commission's 7$^{\mbox{\scriptsize th}}$ Framework Programme.}
+    \adcvrowmulti{Leader of the Work Package on Languages, Internal Project Manager at SINTEF.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{\href{http://www.broker-cloud.eu}{Broker@Cloud}}, a cloud brokerage framework for continuous quality assurance and optimisation}{Nov 2012-Feb 2016}
+  \ifextended
+    \adcvrowmulti{Funded by the European Commission's 7$^{\mbox{\scriptsize th}}$ Framework Programme.}
+    \adcvrowmulti{Leader of Task on Cloud Service Failure Prevention and Recovery, Internal Project Manager at SINTEF.}
+  \fi
+  \adcvrowskip
+  \ifextended
+    \newpage
+  \fi
+  \adcvrowtwo{\textbf{\href{http://equelle.org}{STWT}}, a framework for the specification of simulators for systems of partial differential equations}{Jan 2013-Dec 2014}
+  \ifextended
+    \adcvrowmulti{Funded by SINTEF.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{\href{http://dpf.hib.no}{DPF}}, a diagrammatic specification framework founded on category theory and graph transformation}{Jan 2008-Jan 2012}
+  \ifextended
+    \adcvrowmulti{Funded by the \uib{} and the \hib{}.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{\href{http://zeronotice.org}{ZNF}}, an open source framework for the development of enterprise web applications}{Aug 2005-May 2007}
+  \ifextended
+    \adcvrowmulti{Self-funded.}
+  \fi
+\end{adcvtabletwo}
+
+\section{Management}
+
+\begin{adcvtabletwo}
+  \adcvrowtwo{\textbf{Group Chair}, Instance Model Ad Hoc group of the \href{https://www.oasis-open.org/committees/tosca/}{OASIS TOSCA} standard}{Oct 2015-Present}
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Technical Committee Member}, \href{https://www.oasis-open.org/committees/tosca/}{OASIS TOSCA} standard}{Mar 2014-Present}
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Internal Project Manager} and \textbf{Work Package Leader}, EU-funded projects (see \hyperref[sec:projects]{Projects} above)}{Jan 2013-Present}
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Panel Chair}, PhD panel of the Faculty of Mathematics and Natural Sci., \uib{}, Norway}{Mar 2010-Feb 2011}
+  \adcvrowskip
+  \ifextended
+    \adcvrowtwo{\textbf{Web Editor}, Department of Informatics, \uib{}, Norway}{Aug 2009-Dec 2010}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{Council Member}, Council of the Department of Informatics, \uib{}, Norway}{Aug 2009-Jul 2010}
+    \adcvrowskip
+  \fi
+  \adcvrowtwo{\textbf{Founding Member}, OpenLUG Linux User Group of L'Aquila, Italy}{Nov 2001-Oct 2007}
+\end{adcvtabletwo}
+
+\section{Organisation}
+
+Organising Committee Member: \href{http://fm2015.ifi.uio.no/fm-2015-doctoral-symposium/}{FM 2015 Doctoral Symposium}, \href{http://csb2014.modelbased.net}{CSB 2014}, \href{http://2013.nordicloud.net}{NordiCloud 2013}
+
+Program Committee Member: \href{http://cf2016.holacloud.eu/}{CF 2016}, \href{http://swt4.informatik.uni-mannheim.de/multi-2016/}{MULTI 2016}, \href{http://mmhs.hib.no/}{MMHS 2016}, \href{http://procon-workshop.com/}{PROCON 2016}, \href{http://esocc2016.eu/}{ESOCC 2016}, \href{http://miso.es/multi/2015/}{MULTI 2015}, \href{http://mmhs.hib.no/2015/}{MMHS 2015}, \href{http://miso.es/multi/2014/}{MULTI 2014}, \href{http://mmhs.hib.no/2014/}{MMHS 2014}, \href{https://sites.google.com/site/cloudbrokerworkshop/}{CSB 2013}, \href{http://www.sleconf.org/2012/}{SLE 2012}
+
+Reviewer: \href{http://ees.elsevier.com/compeleceng/}{CAEE}, \href{http://www.sosym.org/}{SoSyM}, \href{http://www.springer.com/computer/journal/607}{Computing}, \href{http://www.nik.no/2013/}{NIK 2013}, \href{http://models2013.lcc.uma.es/}{MODELS 2013}, \href{http://onlinelibrary.wiley.com/journal/10.1002/\%28ISSN\%291532-0618/issues}{JSME}, \href{http://models2012.info/}{MODELS 2012}, \href{http://www2.imm.dtu.dk/conferences/ECMFA-2012/}{ECMFA 2012}, \href{http://avalon.aut.bme.hu/agtive2011/}{AGTIVE 2011}, \href{http://www.model-transformation.org/ICMT2011/}{ICMT 2011}
+
+\section{Education}
+
+\begin{adcvtabletwo}
+  \adcvrowtwo{\textbf{Philosophiae Doctor (Ph.D.)}, Department of Informatics, \uib{}, Norway}{Jan 2008-Dec 2011}
+  \ifextended
+    \adcvrowmulti{Subject of the dissertation: \href{http://hdl.handle.net/1956/5261}{Diagram Predicate Framework meets Model Versioning and Deep Metamodelling}. Supervisors: \href{http://www.uib.no/persons/Uwe.Wolter}{Uwe Wolter} and \href{http://www.uib.no/persons/Khalid.Mughal}{Khalid Azim Mughal}. Opponents: \href{http://www.cs.le.ac.uk/people/rh122/}{Reiko Heckel} and \href{http://einarj.at.ifi.uio.no}{Einar Broch Johnsen}.}
+  \fi
+  \adcvrowskip
+  \adcvrowtwo{\textbf{Master of Science (M.Sc.)}, Department of Computer Science, \uniaq{}, Italy}{Jan 2004-Dec 2006}
+  \ifextended
+    \adcvrowmulti{Final grade 110/110 \textit{cum laude}. Specialised curriculum in software engineering. One-year stay as Erasmus student at the Department of Informatics, \uib{}, Norway. Subject of the dissertation: Problems of Versioning in Model-Driven Architecture. Supervisor: \href{http://www.di.univaq.it/alfonso/}{Alfonso Pierantonio}.}
+  \fi
+  \adcvrowskip
+  \ifextended
+    \adcvrowtwo{\textbf{Postgraduate Diploma}, Department of Computer Science, \uniaq{}, Italy}{Sep 2004-Jul 2005}
+    \adcvrowmulti{Final grade 30/30 \textit{cum laude}. Specialised curriculum in web technology.}
+    \adcvrowskip
+  \fi
+  \adcvrowtwo{\textbf{Bachelor of Science (B.Sc.)}, Department of Computer Science, \uniaq{}, Italy}{Sep 1999-Dec 2003}
+  \ifextended
+    \adcvrowmulti{Final grade 110/110 \textit{cum laude}. General curriculum in computer science. Subject of the dissertation: Generation of Data-Intensive Web Applications Based on UML. Supervisor: \href{http://www.di.univaq.it/alfonso/}{Alfonso Pierantonio}.}
+  \fi
+\end{adcvtabletwo}
+
+\ifextended
+  \section{Courses}
+
+  \begin{adcvtabletwo}
+    \adcvrowtwo{\textbf{Project Management}, SINTEF school, Trondheim, Norway}{Oct 2014}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{Research Methodology}, SINTEF school, Trondheim, Norway}{Nov 2013}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{LASER Summer School on Empirical Software Engineering}, Swiss Federal Institute of Technology (ETH), Z{\"u}rich, Switzerland}{Sep 2010}
+  \end{adcvtabletwo}
+
+  \section{Teaching}\label{sec:teaching}
+
+  \begin{adcvtabletwo}
+    \adcvrowtwo{\textbf{Lecturer}, Industrial Software Engineering (in Norwegian)}{Spring 2012}
+    \adcvrowmulti{Bachelor course TOE058, \hib{}}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{Teaching assistant}, Software Security (in English)}{Fall 2010}
+    \adcvrowmulti{Master course INF226, \uib{}}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{Teaching assistant}, Software Engineering (in Norwegian)}{Spring 2010}
+    \adcvrowmulti{Bachelor course INF112, \uib{}}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{Teaching assistant}, Software Engineering (in Norwegian)}{Spring 2009}
+    \adcvrowmulti{Bachelor course INF112, \uib{}}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{Teaching assistant}, Software Security (in English)}{Fall 2008}
+    \adcvrowmulti{Master course INF226, \uib{}}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{Teaching assistant}, Program Development Methodologies (in Norwegian)}{Spring 2008}
+    \adcvrowmulti{Bachelor course INF101, \uib{}}
+    \adcvrowskip
+    \adcvrowtwo{\textbf{Trainer}, European Computer Driving Licence (ECDL)-like courses (in Italian)}{Oct 2004-Mar 2005}
+    \adcvrowmulti{Computer Usage, File Management, Word Processing, Spreadsheets and Databases}
+  \end{adcvtabletwo}
+
+  \section{Supervision}\label{sec:supervision}
+
+  \begin{adcvtabletwo}
+    \adcvrowtwo{Jakob Høgenes, Master student in Engineering Cybernetics, NTNU. Summer internship at SINTEF.}{Jun 2014-Aug 2014}
+    \adcvrowskip
+    \adcvrowtwo{\href{http://www.sintef.no/home/contact-us/all-employees/?EmpId=5177}{Nikolay Nikolov}, International Master student in Service Engineering, Tilburg University, University of Stuttgart, and University of Crete. Master thesis at SINTEF. Subject of the dissertation: Integration and Co-evolution of Domain-Specific Languages in Heterogeneous Technical Spaces.}{Feb 2014-Jul 2014}
+    \adcvrowskip
+    \adcvrowtwo{Tudor Domnita, Bachelor student in Computer Science, Technical University of Cluj-Napoca. Summer internship at SINTEF.}{Jun 2013-Aug 2013}
+  \end{adcvtabletwo}
+
+  \section{Computer skills}
+
+  Software engineering: UML, EMF, SDL, Java, Bash, PHP, JavaScript, SQL, HTML, CSS, XML, XSL, Eclipse
+
+  System administration: GNU/Linux, Mac OS X, Apache, Tomcat, MySQL, SQLite, Subversion, Git
+
+  Desktop publishing: \LaTeX, BibTeX, Microsoft Office, LibreOffice, Inkscape
+\fi
+
+\section{Languages}
+
+\ifextended
+  \begin{adcvlanguages}
+    \adcvmothertongue{Italian}
+    \adcvlanguagesheader
+    \adcvlanguage{2}{English}{\adcvCTwo}{\adcvCTwo}{\adcvCTwo}{\adcvCTwo}{\adcvCTwo}
+    \adcvlanguage{3}{Norwegian (Bokmål)}{\adcvCTwo}{\adcvCTwo}{\adcvCOne}{\adcvCOne}{\adcvCOne}
+    \adcvlanguage{}{Spanish}{\adcvCOne}{\adcvCOne}{\adcvBTwo}{\adcvBTwo}{\adcvBTwo}
+    \adcvlanguagesfooter
+    \adcvlanguagesfootnote{2}{Course in Academic English at the \uib{}}
+    \adcvlanguagesfootnote{3}{Bestått eksamen i norsk språk og kultur trinn 4 ved Universitetet i Bergen, ekvivalent med Bergenstesten}
+  \end{adcvlanguages}
+\else
+  Mothertongue: \textbf{Italian}, Fluent: \textbf{English, Norwegian, Spanish}
+\fi
+
+\ifextended
+  \section{Personal interests}
+
+  Science, Technology, Languages, Linguistics, Communication, Social Networks, Politics, Travelling, Photography, Food, Wine, Music, Comedy, Running, Hiking
+\fi
+
+\section{Publications}
+
+\ifextended
+  \begin{refsection}
+    \nocite{AichernigRossini15}
+    \nocite{SimonsRossiniPJ14}
+    \printbibliography[title={Books and edited proceedings}, heading=subbibliography]
+  \end{refsection}
+
+  \begin{refsection}
+    \nocite{RossiniDeLaraGRW14}
+    \nocite{RutleRossiniLW12}
+    \nocite{RossiniRutleLW10}
+    \printbibliography[title={Peer-reviewed journals}, heading=subbibliography]
+  \end{refsection}
+
+  \begin{refsection}
+    \nocite{SeyboldDomaschkaRHGT16}
+    \nocite{NikolovRossiniK15}
+    \nocite{DomaschkaGriesingerBR15}
+    \nocite{BergmayrRossiniFHOSW15}
+    \nocite{Rossini16}
+    \nocite{RossiniDeLaraGN15}
+    \nocite{KritikosDomaschkaR14}
+    \nocite{FerrySongRCS14}
+    \nocite{SimonsBratanisKPVVMBR14}
+    \nocite{VeloudisParaskakisVPR14}
+    \nocite{DomaschkaKritikosR14}
+    \nocite{FerryBrataasRCS14}
+    \nocite{KourtesisBratanisFVSRSG14}
+    \nocite{ChauvelFerryMRS13}
+    \nocite{FerryChauvelRMS13}
+    \nocite{FerryRossiniCMS13}
+    \nocite{RossiniDeLaraGRL11}
+    \nocite{MantzRossiniTLW11}
+    \nocite{RossiniRutleMLW11}
+    \nocite{SimonsenMantzRR10}
+    \nocite{RossiniRutleMLW10}
+    \nocite{MantzRossiniRLW10}
+    \nocite{RossiniRutle10}
+    \nocite{RutleRossiniLW10}
+    \nocite{RutleRossiniLW09NWPT}
+    \nocite{RossiniRutleMHMLW09}
+    \nocite{RutleRossiniLW09TOOLS}
+    \nocite{RutleRossiniLW09FASE}
+    \nocite{RutleRossiniLW08NWPTMT}
+    \nocite{RutleRossiniLW08NWPTVC}
+    \nocite{RutleRossini08}
+    \nocite{CicchettiRossini07}
+    \printbibliography[title={Peer-reviewed conferences and workshops}, heading=subbibliography]
+  \end{refsection}
+
+  \begin{refsection}
+    \nocite{ARCADIAD31a}
+    \nocite{BrokerAtCloudD404}
+    \nocite{PaaSageD213}
+    \nocite{ARCADIAD22}
+    \nocite{BrokerAtCloudD402}
+    \nocite{PaaSageD212}
+    \nocite{PaaSageD211}
+    \nocite{MODACloudsD41}
+    \nocite{CicchettiRossini06}
+    \printbibliography[title={Project deliverables and technical reports}, heading=subbibliography]
+  \end{refsection}
+
+  \begin{refsection}
+    \nocite{Rossini11PaaHoeyden}
+    \nocite{RossiniLiberati05}
+    \printbibliography[title={Others}, heading=subbibliography]
+  \end{refsection}
+\else
+  \href{http://www.researchgate.net/profile/Alessandro_Rossini}{30+ publications} in peer-reviewed conferences and journals.
+\fi
+
+\ifextended
+  \section{Presentations}
+
+  \begin{adcvpresentations}
+    \adcvpresentation{Model-Driven Engineering of Cloud Applications}{\href{http://futureofclouds.com/}{Future of Clouds}, Budapest, Hungary, 27 Sep 2016}
+    \adcvpresentation{Cloud Application Modelling with CAMEL}{\href{https://www.evry.com/no/arrangementer/paasage-cloud-event/}{PaaSage Industrial Workshop at EVRY}, Oslo, Norway, 20 Sep 2016}
+    \adcvpresentation{\href{https://alessandrorossini.org/no-email-not-collaborative-editing-solution-comparison-state-of-the-art/}{No, email is not a collaborative editing solution—A comparison of the state-of-the-art}}{\href{http://www.sintef.no}{SINTEF}, Oslo, Norway, 2 Jun 2016}
+    \adcvpresentation{Cloud Application Modelling and Execution Language (CAMEL)}{\href{https://www.hlrs.de/fileadmin/sys/public/events/2016/Preliminary_Agenda_From-Cloud-to_Road_2016-04-11_V1.2.pdf}{From Cloud to Road}, Stuttgart, Germany, 11 Apr 2016}
+    \adcvpresentation{\href{https://alessandrorossini.org/chocolate-hazelnut-spread-experiment/}{The Chocolate-Hazelnut Spread Experiment}}{\href{http://www.sintef.no}{SINTEF}, Oslo, Norway, 10 Mar 2016}
+    \adcvpresentation{Big Data Meets Cloud}{\href{http://bigdatavalue.no/2015/09/21/big-data-meets-cloud-seminar/}{Big Data Meets Cloud SINTEF seminar}, Oslo, Norway, 20 Oct 2015}
+    \adcvpresentation{Failure Prevention and Recovery (FPR) Mechanism, part of the Broker@Cloud Tutorial}{\href{http://esocc2015.unime.it/}{ESOCC 2015}, Taormina, Italy, 17 Sep 2015}
+    \adcvpresentation{Cloud Application Modelling and Execution Language (CAMEL) and the PaaSage Workflow}{\href{http://esocc2015.unime.it/}{ESOCC 2015}, Taormina, Italy, 15 Sep 2015}
+    \adcvpresentation{A Comparison of Two-Level and Multi-Level Modelling for Cloud-Based Applications}{\href{https://www.uni-marburg.de/fb12/swt/ecmfa2015/}{ECMFA 2015}, part of \href{http://www.disim.univaq.it/staf2015/}{STAF 2015}, L'Aquila, Italy, 23 Jul 2015}
+    \adcvpresentation{Failure Analysis, Prevention, and Recovery}{\href{http://www.uib.no}{\uib} and \href{http://www.hib.no}{\hib}, Norway, 28-29 Apr 2015}
+    \adcvpresentation{Self-Adaptive Multi-Cloud Applications}{\href{http://www.uib.no}{\uib} and \href{http://www.hib.no}{\hib}, Norway, 28-29 Apr 2015}
+    \adcvpresentation{PaaSage---Modelling and Execution of Multi-Cloud Applications}{\href{http://seaclouds.lcc.uma.es/}{SeaClouds 2014}, Manchester, UK, 2 Sep 2014}
+    \adcvpresentation{Cloud Modelling Language}{\href{http://www.uio.no}{University of Oslo}, Norway, 6 May 2013, 24 May 2014}
+    \adcvpresentation{Self-Adaptive Cloud-Based Applications}{\href{https://www.fi-athens.eu/}{Future Internet Assembly 2014}, Athens, Greece, 17 Mar 2014}
+    \adcvpresentation{Broker@Cloud---Continuous Quality Assurance and Optimisation for Cloud Brokers}{\href{http://2013.nordicloud.net/}{NordiCloud 2013}, Oslo, Norway, 2 Sep 2013}
+    \adcvpresentation{Towards Model-Driven Provisioning, Deployment, Monitoring, and Adaptation of Multi-Cloud Systems}{\href{http://www.summersoc.eu/summersoc2013/}{Advanced School on Service Oriented Computing}, Hersonissos, Greece, 4 Jul 2013}
+    \adcvpresentation{Towards Model-Driven Provisioning, Deployment, Monitoring, and Adaptation of Multi-Cloud Systems}{\href{http://www.thecloudcomputing.org/2013/}{IEEE CLOUD 2013}, Santa Clara, CA, USA, 30 Jun 2013}
+    \adcvpresentation{Computer Science and Society: Is a New Social Contract Possible?}{\href{http://www.uib.no}{\uib}, Norway, 2 Oct 2012, 1 Feb 2012, 26 Sep 2011, 31 Jan 2011, 29 Sep 2010, 2 Feb 2010, 22 Sep 2009, 4 Feb 2009}
+    \adcvpresentation{Model Versioning and Multi-Level Modelling}{\href{http://www.sintef.no}{SINTEF}, Oslo, Norway, 24 Sep 2012}
+    \adcvpresentation{Model Versioning and Multi-Level Modelling}{\href{http://www.hials.no}{Aalesund University College}, {\AA}lesund, Norway, 21 Sep 2012}
+    \adcvpresentation{A Graph Transformation-Based Semantics for Deep Metamodelling}{\href{http://avalon.aut.bme.hu/agtive2011/}{AGTIVE 2011}, Budapest, Hungary, 5 Oct 2011}
+    \adcvpresentation{A Formal Approach to Data Validation Constraints in MDE}{\href{http://facs2011.ifi.uio.no/index.php?n=TTSS.TTSS2011}{TTSS 2011}, Oslo, Norway, 13 Sep 2011}
+    \adcvpresentation{Action plan for PhD-education at the Faculty of Mathematics and Natural Sciences. PhD gathering of the Department of Mathematics}{\href{http://www.uib.no}{\uib}, Norway, 25 Nov 2010}
+    \adcvpresentation{Constraint-Aware Model Merging}{\href{https://research.it.abo.fi/nwpt10/}{NWPT 2010}, Turku, Finland, 11 Nov 2010}
+    \adcvpresentation{PhD panel at the Faculty of Mathematics and Natural Sciences. PhD seminar of the Department of Biology}{\href{http://www.uib.no}{\uib}, Norway, 19 Oct 2010}
+    \adcvpresentation{Data Validation Constraints in MDE}{\href{http://www2.imm.dtu.dk/projects/nwpt09/index.html}{NWPT 2009}, Lingby, Denmark, 16 Oct 2009}
+    \adcvpresentation{A Category-Theoretical Approach to the Formalisation of Version Control in MDE}{\href{http://www.pst.ifi.lmu.de/fase2009/}{FASE 2009}, York, UK, 25 Mar 2009}
+    \adcvpresentation{Version Control in MDE}{\href{http://cs.ioc.ee/nwpt08/}{NWPT 2008}, Tallinn, Estonia, 20 Nov 2008}
+    \adcvpresentation{Free software and open source}{\href{http://www.uniurb.it}{Università degli Studi di Urbino}, Italy, 13 Apr 2005}
+    \adcvpresentation{Kernel tuning}{LinuxDay 2004, L'Aquila, Italy, 27 Nov 2004}
+    \adcvpresentation{GNU/Linux: a window to the future}{Festa dell'unità 2004, L'Aquila, Italy, 13 Jul 2004}
+    \adcvpresentation{Hardening the box}{Seminari 2004 OpenLUG, L'Aquila, Italy, 2 Jun 2004}
+    \adcvpresentation{Let's package GNU/Linux}{Seminari 2004 OpenLUG, L'Aquila, Italy, 26 May 2004}
+    \adcvpresentation{Changes in PHP 5/ZendEngine 2.0}{LinuxDay 2003, L'Aquila, Italy, 29 Nov 2003}
+    \adcvpresentation{GNU/Linux in practice}{LinuxDay 2002, L'Aquila, Italy, 23 Nov 2002}
+  \end{adcvpresentations}
+\fi
+
+\end{document}
