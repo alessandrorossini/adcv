@@ -1,5 +1,5 @@
 %% adcv.cls
-%% Copyright 2016 Alessandro Rossini.
+%% Copyright 2016-2017 Alessandro Rossini.
 %
 % This work may be distributed and/or modified under the conditions of the LaTeX Project Public License (LPPL) version 1.3 or later.
 %
@@ -252,8 +252,8 @@
 \newlength\adcv@centerrightcol
 \newlength\adcv@langcol
 
-\setlength{\adcv@leftcol}{11em}
-\setlength{\adcv@rightcol}{10em}
+\setlength{\adcv@leftcol}{12em}
+\setlength{\adcv@rightcol}{9em}
 \setlength{\adcv@colsep}{1em}
 \setlength{\adcv@centercol}{\textwidth}
 \addtolength{\adcv@centercol}{-\adcv@leftcol}
@@ -331,11 +331,11 @@
 
 \setmainfont[
   Path = fonts/,
-  BoldFont = RobotoCondensed-Bold.ttf,
-  ItalicFont = RobotoCondensed-Italic.ttf,
-  BoldItalicFont = RobotoCondensed-BoldItalic.ttf,
+  BoldFont = Roboto-Bold.ttf,
+  ItalicFont = Roboto-Italic.ttf,
+  BoldItalicFont = Roboto-BoldItalic.ttf,
   Color=regulartext
-]{RobotoCondensed-Light.ttf}
+]{Roboto-Light.ttf}
 
 \newfontfamily\regular[Path = fonts/, Color=regulartext]{Roboto-Regular.ttf}
 \newfontfamily\light[Path = fonts/, Color=regulartext]{Roboto-Light.ttf}
@@ -379,13 +379,6 @@
 \newcommand*{\phoneicon}{\includegraphics[height=0.75em]{phone.pdf}}
 \newcommand*{\placeicon}{\includegraphics[height=0.75em]{place.pdf}}
 
-\adcvname{}{}
-\adcvtitle{}
-\adcvaddress{}{}{}{}
-\adcvphone{}
-\adcvemail{}{}{}
-\adcvwebsite{}{}
-
 \ifonline
   \def\adcv@address{\placeicon~\adcv@locality,~\adcv@country}
   \def\adcv@email{\envelopeicon~{\linktext\adcv@emaillocal\aticon\adcv@emaildomainsecond\doticon\adcv@emaildomaintop}}
@@ -395,8 +388,6 @@
   \def\adcv@email{\envelopeicon~\href{mailto:\adcv@emaillocal @\adcv@emaildomainsecond.\adcv@emaildomaintop}{\adcv@emaillocal @\adcv@emaildomainsecond.\adcv@emaildomaintop}}
   \def\adcv@telephone{\phoneicon~\adcv@phone}
 \fi
-
-\def\adcv@website{\houseicon~\href{\adcv@websiteurl}{\adcv@websitetext}}
 
 \AtBeginDocument{%
   \begin{tikzpicture}[remember picture, overlay]%
@@ -411,7 +402,45 @@
 
   \vspace{\baselineskip}%
 
-  \hfill\adcv@address~\adcv@website~\adcv@email~\adcv@telephone\hfill%
+  \ifdefined\adcv@websiteurl%
+    \ifx\adcv@websiteurl\empty%
+      \def\adcv@website{}%
+    \else%
+      \def\adcv@website{\houseicon~\href{\adcv@websiteurl}{\adcv@websitetext}}%
+    \fi%
+  \else%
+    \def\adcv@website{}%
+  \fi%
+
+  \begin{center}%
+    \ifonline%
+      \adcv@address~\adcv@email~\adcv@website%
+    \else%
+      \adcv@address~\adcv@telephone%
+
+      \adcv@email~\adcv@website%
+    \fi%
+  \end{center}%
+}
+
+% Footer
+
+\RequirePackage{array}
+\RequirePackage{fancyhdr}
+\RequirePackage{totpages}
+
+\newcommand*{\adcvdate}[1]{\def\adcv@date{#1}}
+
+\def\adcv@totpages{~/~\ref{TotPages}}
+\def\adcv@page{\adcv@pagekey~\thepage\adcv@totpages}
+
+\AtBeginDocument{%
+  \pagestyle{fancy}%
+  \fancyhead{}%
+  \fancyfoot[C]{\footnotesize\light\adcv@firstname~\adcv@lastname\ifextended\adcv@cvofkey\else\adcv@resumeofkey\fi, \adcv@date, \adcv@telephone~\adcv@email}%
+  \fancyfoot[R]{\raggedleft\footnotesize\light\adcv@page}%
+  \renewcommand{\headrulewidth}{0em}%
+  \setlength\footskip{\baselineskip}%
 }
 
 % Tables
@@ -424,11 +453,10 @@
 \setlength{\LTleft}{0em}
 \setlength{\LTright}{0em}
 
-
 \newenvironment*{adcvtabletwo}{\begin{longtable}[l]{@{}>{\raggedright}p{\adcv@leftcentercol}@{\hspace{\adcv@colsep}} @{}>{\raggedleft}p{\adcv@rightcol}@{}}}{\end{longtable}}
 
 \newcommand*{\adcvrowtwo}[2]{#1 & #2\tabularnewline}
-\newcommand*{\adcvrowmulti}[1]{\multicolumn{2}{@{}p{\textwidth}}{\small\lighttext #1}\tabularnewline}
+\newcommand*{\adcvrowmulti}[1]{\multicolumn{2}{@{}p{\textwidth}}{\lighttext #1}\tabularnewline}
 
 \newenvironment*{adcvtablethree}{\begin{longtable}[l]{@{}>{\raggedright}p{\adcv@leftcol}@{\hspace{\adcv@colsep}} @{}>{\raggedright}p{\adcv@centercol}@{} @{\hspace{\adcv@colsep}}>{\raggedleft}p{\adcv@rightcol}@{}}}{\end{longtable}}
 
@@ -597,7 +625,7 @@
 \RequirePackage{enumitem}
 
 \newenvironment*{adcvpresentations}{%
-  \setenumerate{labelsep=1em}%
+  \setlist[enumerate]{labelsep=1em}%
   \renewcommand{\theenumi}{[\arabic{enumi}]}%
   \renewcommand{\labelenumi}{\theenumi}%
   \begin{enumerate}%
@@ -606,25 +634,3 @@
 }
 
 \newcommand*{\adcvpresentation}[2]{\item #1\\{\small\lighttext #2}}
-
-% Footer
-
-\RequirePackage{array}
-\RequirePackage{fancyhdr}
-\RequirePackage{totpages}
-
-\newcommand*{\adcvdate}[1]{\def\adcv@date{#1}}
-
-\adcvdate{}
-
-\def\adcv@totpages{~/~\ref{TotPages}}
-\def\adcv@page{\adcv@pagekey~\thepage\adcv@totpages}
-
-\AtBeginDocument{%
-  \pagestyle{fancy}%
-  \fancyhead{}%
-  \fancyfoot[C]{\footnotesize\light\adcv@firstname~\adcv@lastname\ifextended\adcv@cvofkey\else\adcv@resumeofkey\fi, \adcv@date, \adcv@email~\adcv@telephone}%
-  \fancyfoot[R]{\raggedleft\footnotesize\light\adcv@page}%
-  \renewcommand{\headrulewidth}{0em}%
-  \setlength\footskip{\baselineskip}%
-}

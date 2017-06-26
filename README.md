@@ -43,7 +43,7 @@ The `\adcvpresentation{`*\<title\>*`}{`*\<conference\>*`}` prints an item in the
 
 ## License
 
-Copyright 2016 [Alessandro Rossini](https://alessandrorossini.org).  
+Copyright 2016-2017 [Alessandro Rossini](https://alessandrorossini.org).  
 This work may be distributed and/or modified under the conditions of the [LaTeX Project Public License (LPPL)](http://www.latex-project.org/lppl.txt) version 1.3 or later.  
 This work consists of the files `adcv.cls`, `adcv_en.def`, `bib_alessandro_rossini.bib`, and `cv_alessandro_rossini_en.tex`.
 
