@@ -13,11 +13,11 @@ Adaptive CV requires [XeTeX](http://xetex.sourceforge.net/) along with the [arra
 The `extended` class option prints the content within the `\ifextended`…`\fi` blocks.  
 The `online` class option prints the email address with a bitmap `@` and `.` symbols to prevent email spam, and does not print the street address, the postal code, and the telephone number to preserve privacy.  
 The `print` class option prints the CV in grayscale.  
-The [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code (e.g., `en`, default) class option prints the CV using the corresponding language definition file (e.g., `adcv_en.def`, default). Currently, only the [official languages of the European Union](http://ec.europa.eu/education/official-languages-eu-0_en) plus Norwegian are supported.
+The [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code (e.g., `en`, default) class option prints the CV using the corresponding language definition file (e.g., `adcv_en.def`, default). Currently, only the [official languages of the European Union](https://europa.eu/european-union/about-eu/eu-languages_en) plus Norwegian are supported.
 
 ## Environments and commands
 
-The `\adcvname{`*\<first name\>*`}{`*\<last name\>*`}` command defines the first and last names.  
+The `\adcvname{`*\<first name\>*`}{`*\<last name\>*`}{`*\<academic degree\>*`}` command defines the first and last names, and the academic degree (e.g., PhD).  
 The `\adcvtitle{`*\<title\>*`}` command defines the title.  
 The `\adcvaddress{`*\<street address\>*`}{`*\<postal code\>*`}{`*\<locality name\>*`}{`*\<country name\>*`}` command defines the visiting address.  
 The `\adcvphone{`*\<phone number\>*`}` command defines the phone number.  
@@ -30,7 +30,7 @@ The `\adcvrowtwo{`*\<left column text\>*`}{`*\<right column text\>*`}` command p
 The `\adcvrowmulti{`*\<text\>*`}` command prints a row of the generic table with text spanning across the left and right columns.  
 The `\adcvrowskip` command skips a row.
 
-The `adcvlanguages` environment provides a language proficiency table based on the [Common European Framework of Reference for Languages (CEFR)](http://www.coe.int/lang-CEFR).  
+The `adcvlanguages` environment provides a language proficiency table based on the [Common European Framework of Reference for Languages (CEFR)](https://www.coe.int/en/web/common-european-framework-reference-languages).  
 The `\adcvmothertongue{`*\<language name\>*`}` command prints the mother tongue.  
 The `\adcvlanguagesheader` command prints the header of the language proficiency table.  
 The `\adcvlanguage{`*\<footnote number\> (optional)*`}{`*\<language name\>*`}{`*\<listening level\>*`}{`*\<reading level\>*`}{`*\<interaction level\>*`}{`*\<production level\>*`}{`*\<writing level\>*`}` command prints a row in the language proficiency table.  
@@ -43,10 +43,10 @@ The `\adcvpresentation{`*\<title\>*`}{`*\<conference\>*`}` prints an item in the
 
 ## License
 
-Copyright 2016-2017 [Alessandro Rossini](https://alessandrorossini.org).  
-This work may be distributed and/or modified under the conditions of the [LaTeX Project Public License (LPPL)](http://www.latex-project.org/lppl.txt) version 1.3 or later.  
+Copyright 2016-2020 [Alessandro Rossini](https://alessandrorossini.org).  
+This work may be distributed and/or modified under the conditions of the [LaTeX Project Public License (LPPL)](https://www.latex-project.org/lppl.txt) version 1.3 or later.  
 This work consists of the files `adcv.cls`, `adcv_en.def`, `bib_alessandro_rossini.bib`, and `cv_alessandro_rossini_en.tex`.
 
 ## Acknowledgements
 
-Adaptive CV is inspired by [Friggeri CV](https://www.overleaf.com/latex/templates/friggeri-cv-template/hmnchbfmjgqh) and [Europe CV](https://www.ctan.org/pkg/europecv). It uses the [Roboto fonts](https://fonts.google.com/specimen/Roboto) and the [Multimedia Collection icons](http://www.flaticon.com/packs/multimedia-collection).
+Adaptive CV is inspired by [Friggeri CV](https://www.overleaf.com/latex/templates/friggeri-cv-template/hmnchbfmjgqh) and [Europe CV](https://www.ctan.org/pkg/europecv). It uses the [Roboto fonts](https://fonts.google.com/specimen/Roboto) and the [Multimedia Collection icons](https://www.flaticon.com/packs/multimedia-collection).

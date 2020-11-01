@@ -1,10 +1,10 @@
 %% adcv.cls
-%% Copyright 2016-2017 Alessandro Rossini.
+%% Copyright 2016-2020 Alessandro Rossini.
 %
 % This work may be distributed and/or modified under the conditions of the LaTeX Project Public License (LPPL) version 1.3 or later.
 %
 % The latest version of this license is in
-%   http://www.latex-project.org/lppl.txt
+%   https://www.latex-project.org/lppl.txt
 % and version 1.3 or later is part of all distributions of LaTeX version 2005/12/01 or later.
 %
 % This work consists of the files adcv.cls, adcv_en.def, bib_alessandro_rossini.bib, and cv_alessandro_rossini_en.tex.
@@ -252,7 +252,7 @@
 \newlength\adcv@centerrightcol
 \newlength\adcv@langcol
 
-\setlength{\adcv@leftcol}{12em}
+\setlength{\adcv@leftcol}{11em}
 \setlength{\adcv@rightcol}{9em}
 \setlength{\adcv@colsep}{1em}
 \setlength{\adcv@centercol}{\textwidth}
@@ -297,33 +297,28 @@
 
 % Hyperref
 
+\RequirePackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  allcolors=linktext
+}
+
 \ifextended
   \AtBeginDocument{%
     \hypersetup{%
-      colorlinks=true,%
-      citecolor=linktext,%
-      linkcolor=linktext,%
-      urlcolor=linktext,%
       pdfauthor={\adcv@firstname~\adcv@lastname},%
-      pdfsubject={\adcv@firstname~\adcv@lastname\adcv@cvofkey},%
       pdftitle={\adcv@firstname~\adcv@lastname\adcv@cvofkey}%
     }%
   }
 \else
   \AtBeginDocument{%
     \hypersetup{%
-      colorlinks=true,%
-      citecolor=linktext,%
-      linkcolor=linktext,%
-      urlcolor=linktext,%
       pdfauthor={\adcv@firstname~\adcv@lastname},%
-      pdfsubject={\adcv@firstname~\adcv@lastname\adcv@resumeofkey},%
       pdftitle={\adcv@firstname~\adcv@lastname\adcv@resumeofkey}%
     }%
   }
 \fi
-
-\RequirePackage{hyperref}
 
 % Fonts
 
@@ -349,14 +344,14 @@
 \def\@sectioncolor#1#2#3{{\addfontfeature{Color=linktext} #1#2#3}}
 \def\HyColor@@@@UseColor#1\@nil{\addfontfeatures{Color=linktext}}
 
-\renewcommand{\section}[1]{{\Large\bfseries\@sectioncolor #1}}
+\renewcommand{\section}[1]{\vspace{.5\baselineskip}{\Large\bfseries\@sectioncolor #1}}
 \renewcommand{\subsection}[2]{\large\bfseries #2}
 
 % Header
 
 \RequirePackage{tikz}
 
-\newcommand*{\adcvname}[2]{\def\adcv@firstname{#1}\def\adcv@lastname{#2}}
+\newcommand*{\adcvname}[3]{\def\adcv@firstname{#1}\def\adcv@lastname{#2}\def\adcv@degree{#3}}
 \newcommand*{\adcvtitle}[1]{\def\adcv@title{#1}}
 \newcommand*{\adcvaddress}[4]{\def\adcv@street{#1}\def\adcv@postalcode{#2}\def\adcv@locality{#3}\def\adcv@country{#4}}
 \newcommand*{\adcvphone}[1]{\def\adcv@phone{#1}}
@@ -393,7 +388,7 @@
   \begin{tikzpicture}[remember picture, overlay]%
     \node [rectangle, fill=headerfill, minimum width=\paperwidth, minimum height=8em, anchor=north] (box) at (current page.north) {};%
     \node [text=headertext, anchor=center] (name) at (box) {%
-      {\Huge\thinheader\adcv@firstname~\regularheader\adcv@lastname}%
+      {\Huge\thinheader\adcv@firstname~\regularheader\adcv@lastname\thinheader,~\adcv@degree}%
     };%
     \node [text=headertext, anchor=north] at (name.south) {%
       \Large\thinheader\adcv@title%
@@ -414,11 +409,13 @@
 
   \begin{center}%
     \ifonline%
-      \adcv@address~\adcv@email~\adcv@website%
-    \else%
-      \adcv@address~\adcv@telephone%
-
       \adcv@email~\adcv@website%
+
+      \adcv@address%
+    \else%
+      \adcv@email~\adcv@website%
+
+      \adcv@address~\adcv@telephone%
     \fi%
   \end{center}%
 }
@@ -510,107 +507,106 @@
 
 % Publications
 
-\RequirePackage[backend=biber,defernumbers=false,maxnames=99,sorting=none,style=numeric]{biblatex}
+\RequirePackage[backend=biber,block=par,defernumbers=false,maxnames=99,sorting=none,style=numeric]{biblatex}
 \RequirePackage{csquotes}
 \urlstyle{same}
 
-\DeclareFieldFormat[article]{title}{#1\par}
-\DeclareFieldFormat[inproceedings]{title}{#1\par}
-\DeclareFieldFormat[misc]{title}{#1\par}
-\DeclareFieldFormat[report]{title}{#1\par}
+\DeclareFieldFormat[article]{title}{#1}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat[misc]{title}{#1}
+\DeclareFieldFormat[report]{title}{#1}
+
+\renewcommand*{\newunitpunct}{\addcomma\space}
 
 \DeclareBibliographyDriver{article}{%
   \printfield{title}%
-  \par%
   \newblock%
   \printnames{author}%
-  \par%
   \newblock%
   {%
     \small\lighttext%
     \usebibmacro{journal+issuetitle}%
-    \setunit{\space}%
+    \newunit%
     \printfield{pages}%
     \newunit%
     \printlist{publisher}%
-    \setunit*{\addcomma\space}%
-    \printfield{year}%
+    \setunit{}%
+    \newblock%
     \iffieldundef{doi}{%
       \iffieldundef{isbn}{}{%
-        \newunit%
         \printfield{isbn}%
+        \newblock%
       }%
     }{%
-      \newunit%
       \printfield{doi}%
+      \newblock%
     }%
-    \vspace{.5\baselineskip}%
+    \printfield{url}%
+    \newblock%
   }%
+  \vspace{.5\baselineskip}%
 }
 
 \DeclareBibliographyDriver{inproceedings}{%
   \printfield{title}%
-  \par%
   \newblock%
   \printnames{author}%
-  \par%
   \newblock%
   {%
     \small\lighttext%
     \printfield{booktitle}%
-    \setunit{\addcomma\space}%
+    \newunit%
     \printfield{year}%
+    \newunit%
+    \printlist{publisher}%
+    \setunit{}%
+    \newblock%
     \iffieldundef{doi}{%
       \iffieldundef{isbn}{}{%
-        \newunit%
         \printfield{isbn}%
+        \newblock%
       }%
     }{%
-      \newunit%
       \printfield{doi}%
+      \newblock%
     }%
-    \vspace{.5\baselineskip}%
+    \printfield{url}%
+    \newblock%
   }%
+  \vspace{.5\baselineskip}%
 }
 
 \DeclareBibliographyDriver{report}{%
   \printfield{title}%
-  \par%
   \newblock%
   \printnames{author}%
-  \par%
   \newblock%
   {%
     \small\lighttext%
-    \printfield{type}%
-    \setunit{\addcomma\space}%
     \printlist{institution}%
-    \setunit{\addcomma\space}%
+    \newunit%
     \printfield{year}%
-    \iffieldundef{isbn}{}{%
-      \newunit%
-      \printfield{isbn}%
-    }%
-    \vspace{.5\baselineskip}%
+    \setunit{}%
+    \newblock%
+    \printfield{isbn}%
+    \newblock%
   }%
+  \vspace{.5\baselineskip}%
 }
 
 \DeclareBibliographyDriver{misc}{%
   \printfield{title}%
-  \par%
   \newblock%
   \printnames{author}%
-  \par%
   \newblock%
   {%
     \small\lighttext%
-    \printfield{booktitle}%
-    \setunit*{\addcomma\space}%
-    \printfield{note}%
-    \setunit*{\addcomma\space}%
     \printfield{year}%
-    \vspace{.5\baselineskip}%
+    \newblock%
+    \printfield{note}%
+    \newblock%
   }%
+  \vspace{.5\baselineskip}%
 }
 
 \DeclareNameFormat{author}{%
