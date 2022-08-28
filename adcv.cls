@@ -12,6 +12,55 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{adcv}[2016/12/15 Adaptive CV]
 
+% This block defines a new command called \getrelativepath which can be used to
+% define a macro containing the relative path to a file given as input. See
+% below.
+%
+% Courtesy of user Phelype Oleinik on Tex StackExchange, with a minor change to
+% print a '.' at the beginning of the relative path:
+% https://tex.stackexchange.com/a/533260
+\RequirePackage{expl3}
+\ExplSyntaxOn
+\str_new:N \l__carsten_tmpa_str
+\cs_new_protected:Npn \__carsten_tmp:w { }
+\cs_new_protected:Npn \getrelativepath #1 #2
+  {
+    \str_set:Nx \l__carsten_tmpa_str { ./\@currname.\@currext }
+    \exp_args:NV \str_if_in:NnTF \l__carsten_tmpa_str {#2}
+      {
+        \str_if_eq:VnTF \l__carsten_tmpa_str {#2}
+          { \tl_set:Nn #1 { } }
+          { \exp_args:Nx \__carsten_parse_path:nN { \tl_to_str:n {#2} } #1 }
+      }
+      { \msg_error:nnxx { carsten } { wrong-path } {#2} { \l__carsten_tmpa_str } }
+  }
+\cs_new_protected:Npn \__carsten_parse_path:nN #1 #2
+  {
+    \cs_set_protected:Npn \__carsten_tmp:w ##1 #1 \q_mark ##2 ##3 \q_stop
+      {
+        \quark_if_nil:nTF {##2}
+          { \tl_set:Nn #2 {##1} }
+          { \msg_error:nn { carsten } { unexpected-error } }
+      }
+    \use:x
+      {
+        \__carsten_tmp:w
+          \exp_not:V \l__carsten_tmpa_str \exp_not:n { \q_mark \q_nil }
+                        \tl_to_str:n {#1} \exp_not:n { \q_mark \q_mark }
+            \exp_not:N \q_stop
+      }
+  }
+\msg_new:nnn { carsten } { wrong-path }
+  { Unexpected~path~error.~'#1'~not~found~in~'#2'. }
+\msg_new:nnn { carsten } { unexpected-error }
+  { This~should~not~happen. }
+\ExplSyntaxOff
+
+% Using this command a new macro \thispath is defined, which can be used to
+% refer to files in the same directory as the adcv.cls file using the correct
+% relative paths with respect to the main document
+\getrelativepath\thispath{adcv.cls}
+
 % Options
 
 \newif\ifextended
@@ -32,205 +81,74 @@
   \printtrue
 }
 
-\DeclareOption{bg}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_bg.def}{}{
-      \ClassError{adcv}{Bulgarian definition file 'adcv_bg.def' not found.}
+% This command includes the specified file either from the current document path
+% or from the class file path, raising an error if not found in any of those.
+\newcommand\InputIfFileExistsMultiple[2]{
+  \InputIfFileExists{#1}{}{
+    \InputIfFileExists{\thispath/#1}{}{
+      \ClassError{adcv}{#2 definition file '#1' not found.}
     }
   }
 }
 
-\DeclareOption{hr}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_hr.def}{}{
-      \ClassError{adcv}{Croatian definition file 'adcv_hr.def' not found.}
+% Defines a new command to declare language options
+\newcommand\DeclareLangOption[2]{
+  \DeclareOption{#1}{
+    \AtEndOfPackage{
+      \InputIfFileExistsMultiple{adcv_#1.def}{#2}
     }
   }
 }
 
-\DeclareOption{cs}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_cs.def}{}{
-      \ClassError{adcv}{Czech definition file 'adcv_cs.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{bg}{Bulgarian}
 
-\DeclareOption{da}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_da.def}{}{
-      \ClassError{adcv}{Danish definition file 'adcv_da.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{hr}{Croatian}
 
-\DeclareOption{nl}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_nl.def}{}{
-      \ClassError{adcv}{Dutch definition file 'adcv_nl.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{cs}{Czech}
 
-\DeclareOption{en}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_en.def}{}{
-      \ClassError{adcv}{English definition file 'adcv_en.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{da}{Danish}
 
-\DeclareOption{et}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_et.def}{}{
-      \ClassError{adcv}{Estonian definition file 'adcv_et.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{nl}{Dutch}
 
-\DeclareOption{fi}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_fi.def}{}{
-      \ClassError{adcv}{Finnish definition file 'adcv_fi.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{en}{English}
 
-\DeclareOption{fr}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_fr.def}{}{
-      \ClassError{adcv}{French definition file 'adcv_fr.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{et}{Estonian}
 
-\DeclareOption{de}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_de.def}{}{
-      \ClassError{adcv}{German definition file 'adcv_de.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{fi}{Finnish}
 
-\DeclareOption{el}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_el.def}{}{
-      \ClassError{adcv}{Greek definition file 'adcv_el.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{fr}{French}
 
-\DeclareOption{hu}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_hu.def}{}{
-      \ClassError{adcv}{Hungarian definition file 'adcv_hu.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{de}{German}
 
-\DeclareOption{ga}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_ga.def}{}{
-      \ClassError{adcv}{Irish definition file 'adcv_ga.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{el}{Greek}
 
-\DeclareOption{it}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_it.def}{}{
-      \ClassError{adcv}{Italian definition file 'adcv_it.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{hu}{Hungarian}
 
-\DeclareOption{lv}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_lv.def}{}{
-      \ClassError{adcv}{Latvian definition file 'adcv_lv.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{ga}{Irish}
 
-\DeclareOption{lt}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_lt.def}{}{
-      \ClassError{adcv}{Lithuanian definition file 'adcv_lt.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{it}{Italian}
 
-\DeclareOption{mt}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_mt.def}{}{
-      \ClassError{adcv}{Maltese definition file 'adcv_mt.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{lv}{Latvian}
 
-\DeclareOption{no}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_no.def}{}{
-      \ClassWarningNoLine{adcv}{Norwegian definition file 'adcv_no.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{lt}{Lithuanian}
 
-\DeclareOption{pl}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_pl.def}{}{
-      \ClassError{adcv}{Polish definition file 'adcv_pl.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{mt}{Maltese}
 
-\DeclareOption{pt}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_pt.def}{}{
-      \ClassError{adcv}{Portuguese definition file 'adcv_pt.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{no}{Norwegian}
 
-\DeclareOption{ro}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_ro.def}{}{
-      \ClassError{adcv}{Romanian definition file 'adcv_ro.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{pl}{Polish}
 
-\DeclareOption{sk}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_sk.def}{}{
-      \ClassError{adcv}{Slovak definition file 'adcv_sk.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{pt}{Portuguese}
 
-\DeclareOption{sl}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_sl.def}{}{
-      \ClassError{adcv}{Slovenian definition file 'adcv_sl.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{ro}{Romanian}
 
-\DeclareOption{es}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_es.def}{}{
-      \ClassWarningNoLine{adcv}{Spanish definition file 'adcv_es.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{sk}{Slovak}
 
-\DeclareOption{sv}{
-  \AtEndOfPackage{
-    \InputIfFileExists{adcv_sv.def}{}{
-      \ClassWarningNoLine{adcv}{Swedish definition file 'adcv_sv.def' not found.}
-    }
-  }
-}
+\DeclareLangOption{sl}{Slovenian}
+
+\DeclareLangOption{es}{Spanish}
+
+\DeclareLangOption{sv}{Swedish}
 
 \DeclareOption*{
   \PassOptionsToClass{\CurrentOption}{article}
@@ -324,19 +242,21 @@
 
 \RequirePackage{fontspec}
 
+\newcommand\fontspath{ \thispath/fonts/ }
+
 \setmainfont[
-  Path = fonts/,
+  Path = \fontspath,
   BoldFont = Roboto-Bold.ttf,
   ItalicFont = Roboto-Italic.ttf,
   BoldItalicFont = Roboto-BoldItalic.ttf,
   Color=regulartext
 ]{Roboto-Light.ttf}
 
-\newfontfamily\regular[Path = fonts/, Color=regulartext]{Roboto-Regular.ttf}
-\newfontfamily\light[Path = fonts/, Color=regulartext]{Roboto-Light.ttf}
-\newfontfamily\thin[Path = fonts/, Color=regulartext]{Roboto-Thin.ttf}
-\newfontfamily\regularheader[Path = fonts/, Color=headertext]{Roboto-Regular.ttf}
-\newfontfamily\thinheader[Path = fonts/, Color=headertext]{Roboto-Thin.ttf}
+\newfontfamily\regular[Path = \fontspath, Color=regulartext]{Roboto-Regular.ttf}
+\newfontfamily\light[Path = \fontspath, Color=regulartext]{Roboto-Light.ttf}
+\newfontfamily\thin[Path = \fontspath, Color=regulartext]{Roboto-Thin.ttf}
+\newfontfamily\regularheader[Path = \fontspath, Color=headertext]{Roboto-Regular.ttf}
+\newfontfamily\thinheader[Path = \fontspath, Color=headertext]{Roboto-Thin.ttf}
 
 \newcommand*{\lighttext}{\addfontfeature{Color=lighttext}}
 \newcommand*{\linktext}{\addfontfeature{Color=linktext}}
@@ -358,7 +278,7 @@
 \newcommand*{\adcvemail}[3]{\def\adcv@emaillocal{#1}\def\adcv@emaildomainsecond{#2}\def\adcv@emaildomaintop{#3}}
 \newcommand*{\adcvwebsite}[2]{\def\adcv@websiteurl{#1}\def\adcv@websitetext{#2}}
 
-\graphicspath{{icons/}}
+\graphicspath{{\thispath/icons/}}
 
 \ifprint
   \newcommand*{\aticon}{\includegraphics[height=0.75em]{at_print.png}}
